@@ -13,14 +13,12 @@
 const loadNotionData = async () => {
     try {
         const response = await fetch("https://notion-backend-five.vercel.app/api/notion");
-        
-        // 응답 데이터 처리
         const data = await response.json();
 
         // 데이터가 배열인지 확인하고 처리
         if (Array.isArray(data)) {
             data.forEach((item) => {
-                console.log("Title:", item.title); // 예: 제목 출력
+                console.log("Average Cost (20DRY):", item.averageCost); // 평균가 출력
             });
         } else {
             console.error("Unexpected data format:", data);
@@ -32,6 +30,7 @@ const loadNotionData = async () => {
 
 // 데이터 로드 함수 실행
 loadNotionData();
+
 
     </script>
 </body>
