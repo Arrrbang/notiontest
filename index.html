@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notion 데이터</title>
+</head>
+<body>
+    <h1>Notion 데이터</h1>
+    <ul id="notion-list"></ul>
+
+    <script>
+        async function loadNotionData() {
+            // Vercel API URL
+            const response = await fetch("https://your-vercel-project.vercel.app/api/notion");
+            const data = await response.json();
+
+            // 데이터를 HTML 리스트에 렌더링
+            const list = document.getElementById("notion-list");
+            data.forEach(item => {
+                const listItem = document.createElement("li");
+                listItem.textContent = item.title;
+                list.appendChild(listItem);
+            });
+        }
+
+        // 데이터 로드 실행
+        loadNotionData();
+    </script>
+</body>
+</html>
